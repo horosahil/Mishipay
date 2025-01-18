@@ -1,4 +1,3 @@
-# Mishipay
 # Inventory Management System
 
 This project is an Inventory Management System built using Django, MongoDB, HTML, CSS, and JavaScript. It is designed to efficiently manage products, stock levels, suppliers, and sales. The system supports CRUD operations for managing products and suppliers, facilitates stock management, and enables tracking of sales orders.
@@ -28,6 +27,7 @@ This project is an Inventory Management System built using Django, MongoDB, HTML
 - **Frontend**: HTML, CSS, JavaScript
 - **Database**: MongoDB
 
+
 ## Installation
 
 ### Prerequisites
@@ -41,3 +41,16 @@ This project is an Inventory Management System built using Django, MongoDB, HTML
    ```bash
    git clone <repository-url>
    cd <project-directory>
+2. Install the required dependencies:
+
+   ```bash
+    pip install -r requirements.txt
+3. Set up Django default sqlite as the database.
+4. Run migrations:
+   ```bash
+   python manage.py migrate
+5. Start the development server:
+    ```bash
+    python manage.py runserver
+6. Open the app in a web browser at http://127.0.0.1:8000/
+
