@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Product</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: white;
+            width: 100%;
+            max-width: 600px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 1.8em;
+            color: #333;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        h2 {
+            font-size: 1.3em;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .back-link {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .back-link a {
+            color: #4CAF50;
+            font-size: 1em;
+            text-decoration: none;
+        }
+
+        .back-link a:hover {
+            text-decoration: underline;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        label {
+            font-size: 1em;
+            color: #333;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input, textarea, select {
+            padding: 10px;
+            font-size: 1em;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+            transition: border-color 0.3s ease;
+            width: 100%;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            border-color: #4CAF50;
+            outline: none;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+        .back-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Edit Product</h1>
+
+        <!-- Back Link -->
+        
+       
+
+        <form method="POST">
+            {% csrf_token %}
+
+            <label for="name">Product Name</label>
+            <input type="text" name="name" value="{{ form.name.value }}" required>
+
+            <label for="description">Description</label>
+            <textarea name="description" rows="4" required>{{ form.description.value }}</textarea>
+
+            <label for="category">Category</label>
+            <input type="text" name="category" value="{{ form.category.value }}" required>
+
+            <label for="price">Price</label>
+            <input type="number" name="price" value="{{ form.price.value }}" required>
+
+            <label for="stock_quantity">Stock Quantity</label>
+            <input type="number" name="stock_quantity" value="{{ form.stock_quantity.value }}" required>
+
+            <label for="supplier">Supplier</label>
+            <select name="supplier" required>
+                {% for supplier in suppliers %}
+                    <option value="{{ supplier.id }}" {% if supplier.id == product.supplier.id %}selected{% endif %}>{{ supplier.name }}</option>
+                {% endfor %}
+            </select>
+
+            <button type="submit">Update Product</button>
+        </form>
+        <div class="back-link">
+            <a href="{% url 'list_products' %}">Back to Product List</a>
+        </div>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cancel Sale Order</title>
+    <a href="{% url 'home' %}">Back to Home</a>
+</head>
+<body>
+    <h1>Are you sure you want to cancel this sale order?</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit">Yes, Cancel Order</button>
+    </form>
+    <a href="{% url 'list_orders' %}">Back to Orders</a>
+</body>
+</html>

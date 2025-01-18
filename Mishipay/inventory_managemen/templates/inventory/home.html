@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory Management System</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #a8e063, #56ab2f); /* Beautiful green gradient */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        h1 {
+            color: #fff;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.8rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            max-width: 1200px;
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            width: 280px;
+            text-align: center;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 18px rgba(0, 0, 0, 0.2);
+        }
+
+        .card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: #388E3C; /* Lush Green Color */
+            font-weight: 500;
+            transition: color 0.3s ease-in-out;
+        }
+
+        .card a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 1.1rem;
+            display: block;
+            margin-top: 15px;
+            padding: 12px 0;
+            background-color: #4CAF50; /* Green background for buttons */
+            border-radius: 6px;
+            transition: background-color 0.3s ease;
+        }
+
+        .card a:hover {
+            background-color: #45a049; /* Darker green on hover */
+        }
+
+        .card a:nth-child(2) {
+            background-color: #f57c00; /* Orange color for secondary actions */
+            margin-top: 10px;
+        }
+
+        .card a:nth-child(2):hover {
+            background-color: #e64a19; /* Darker orange on hover */
+        }
+
+        .card p {
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .container .card img {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 20px;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .card img:hover {
+            transform: scale(1.1);
+        }
+
+        /* Style for the card icons */
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            background-color: #388E3C; /* Green icon background */
+            border-radius: 50%;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            font-size: 1.6rem;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .card-icon:hover {
+            background-color: #45a049; /* Darker green on hover */
+            transform: rotate(360deg);
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Welcome to the Inventory Management System</h1>
+    <div class="container">
+        <div class="card">
+            <div class="card-icon">📦</div>
+            <h3>Products</h3>
+            <p>Manage your product list and details.</p>
+            <a href="{% url 'list_products' %}">View Products</a>
+            <a href="{% url 'add_product' %}">Add New Product</a>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">🏢</div>
+            <h3>Suppliers</h3>
+            <p>Track your supplier information and add new ones.</p>
+            <a href="{% url 'list_suppliers' %}">View Suppliers</a>
+            <a href="{% url 'add_supplier' %}">Add New Supplier</a>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">📈</div>
+            <h3>Stock Movements</h3>
+            <p>Log and track your stock movements.</p>
+            <a href="{% url 'add_stock_movement' %}">Add Stock Movement</a>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">🛒</div>
+            <h3>Orders</h3>
+            <p>Create and manage sales orders.</p>
+            <a href="{% url 'list_orders' %}">View Orders</a>
+            <a href="{% url 'create_sale_order' %}">Create New Sale Order</a>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">📊</div>
+            <h3>Stock Levels</h3>
+            <p>Check your current stock levels.</p>
+            <a href="{% url 'check_stock_levels' %}">Check Stock Levels</a>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Supplier</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: white;
+            width: 100%;
+            max-width: 700px;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        h1 {
+            font-size: 2em;
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 1.5em;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #4CAF50;
+            font-size: 1.1em;
+            margin-bottom: 20px;
+            display: inline-block;
+            text-align: center;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        label {
+            font-size: 1em;
+            color: #333;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input, textarea {
+            padding: 12px;
+            font-size: 1em;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            margin-bottom: 15px;
+            transition: border-color 0.3s ease;
+            width: 100%;
+        }
+
+        input:focus, textarea:focus {
+            border-color: #4CAF50;
+            outline: none;
+        }
+
+        button {
+            padding: 12px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .back-link-top {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .back-link-bottom {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+       
+
+       
+
+        {% comment %} <h2>Edit Supplier: {{ supplier.name }}</h2> {% endcomment %}
+
+        <form method="POST">
+            {% csrf_token %}
+            
+            <label for="name">Supplier Name</label>
+            <input type="text" name="name" value="{{ form.name.value }}" required>
+
+            <label for="email">Email</label>
+            <input type="email" name="email" value="{{ form.email.value }}" required>
+
+            <label for="phone">Phone</label>
+            <input type="tel" name="phone" value="{{ form.phone.value }}" required>
+
+            <label for="address">Address</label>
+            <textarea name="address" rows="4" required>{{ form.address.value }}</textarea>
+
+            <button type="submit">Update Supplier</button>
+        </form>
+
+        <!-- Back Link at the bottom -->
+        <div class="back-link-bottom">
+            <a href="{% url 'list_suppliers' %}">Back to Supplier List</a>
+        </div>
+    </div>
+</body>
+</html>
